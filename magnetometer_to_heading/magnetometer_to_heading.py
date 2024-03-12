@@ -7,6 +7,8 @@ import math
 class MagnetometerHeadingPublisher(Node):
     def __init__(self):
         super().__init__('magnetometer_to_heading')
+
+        self.axis_orientation = 'Y_NORTH'  # 여기서 원하는 방향으로 설정하세요.
         self.subscription = self.create_subscription(
             MagneticField,
             'magnetometer',
@@ -18,7 +20,12 @@ class MagnetometerHeadingPublisher(Node):
         Bx = msg.magnetic_field.x
         By = msg.magnetic_field.y
         
-        theta_radians = math.atan2(By, Bx)
+        # 센서 배치에 따라 각도 계산
+        if self.axis_orientation == 'X_NORTH':
+            theta_radians = math.atan2(By, Bx)
+        elif self.axis_orientation == 'Y_NORTH':
+            theta_radians = math.atan2(-Bx, By)  # +Y가 북쪽일 때의 계산
+
         theta_degrees = math.degrees(theta_radians)
         
         # Normalize the angle to be within the range [0, 360)
