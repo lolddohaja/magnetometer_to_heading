@@ -35,7 +35,7 @@ class MagnetometerHeadingPublisher(Node):
         heading_msg = Float64()
         heading_msg.data = theta_degrees
         self.publisher.publish(heading_msg)
-        self.get_logger().info('Published heading: {:.2f} degrees'.format(theta_degrees))
+        # self.get_logger().info('Published heading: {:.2f} degrees'.format(theta_degrees))
 
 def main(args=None):
     rclpy.init(args=args)
