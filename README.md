@@ -5,3 +5,7 @@ A package that generates an orientation value as a topic based on data from the 
 ```bash
 ros2 run magnetometer_to_heading magnetometer_to_heading
 ```
+
+```bash
+ros2 run magnetometer_to_heading imu_to_heading
+```
