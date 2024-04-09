@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
                 'magnetometer_to_heading = magnetometer_to_heading.magnetometer_to_heading:main'
+                'imu_to_heading = magnetometer_to_heading.imu_to_heading:main'
         ],
     },
 )
